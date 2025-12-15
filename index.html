@@ -176,11 +176,72 @@
             </ul>
         </div>
 
-            <!-- 주요 기능 -->
-            <div class="bg-gray-800 rounded-xl shadow-lg p-6 my-8">
-    <h3 class="text-2xl font-semibold text-cyan-300 mb-8 text-center md:text-left">주요 기능 (Key Features)</h3>
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6 my-8 border border-gray-700">
+            <div class="flex items-center gap-3 mb-6">
+                <h3 class="text-2xl font-semibold text-cyan-300">Code Deep Dive: RAG & Prompt Engineering</h3>
+            </div>
+            
+            <p class="text-gray-300 mb-8 leading-relaxed">
+                WildGuard AI의 높은 신뢰도는 정교한 <strong>검색 알고리즘</strong>과 강력한 제약 조건을 건 <strong>시스템 프롬프트</strong>에서 나옵니다.
+                아래는 실제 앱에 탑재된 핵심 로직으로, AI가 거짓 정보(Hallucination)를 생성하지 못하도록 강제하는 과정을 보여줍니다.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="flex flex-col group">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-cyan-500">Step 1. 지식 검색 (Retrieval)</h4>
+                        <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">Kotlin</span>
+                    </div>
+                    
+                    <div class="bg-black rounded-lg overflow-hidden border border-gray-600 shadow-md mb-4 transition transform group-hover:scale-[1.02] duration-300">
+                        <img src="https://i.imgur.com/zXyFp78.png"
+                            alt="RAG Retrieval Logic Code" 
+                            class="w-full h-auto object-cover opacity-90 group-hover:opacity-100">
+                    </div>
+                    
+                    <div class="bg-gray-700/50 p-4 rounded-lg">
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            사용자의 질문이 들어오면 <code>textEmbedder</code>가 이를 벡터로 변환하고, 로컬 DB에서 가장 연관성이 높은 지식 청크(Top Chunks)를 찾아냅니다.
+                            <br><br>
+                            <span class="text-cyan-400 font-semibold">Fail-safe Logic:</span> 코드의 <code>try-catch</code> 블록에서 볼 수 있듯이, 벡터 임베딩 검색이 실패할 경우 즉시 <strong>키워드 검색(Keyword Search)</strong>으로 전환하여 어떤 상황에서도 답변을 생성할 수 있도록 안정성을 확보했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col group">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-cyan-500">Step 2. 프롬프트 주입 (Prompt Injection)</h4>
+                        <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">System Prompt</span>
+                    </div>
+                    
+                    <div class="bg-black rounded-lg overflow-hidden border border-gray-600 shadow-md mb-4 transition transform group-hover:scale-[1.02] duration-300">
+                        <img src="https://i.imgur.com/tIY6iSR.png"
+                            alt="System Prompt Engineering Code" 
+                            class="w-full h-auto object-cover opacity-90 group-hover:opacity-100">
+                    </div>
+                    
+                    <div class="bg-gray-700/50 p-4 rounded-lg">
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            검색된 지식은 <code>$context</code> 변수에 담겨 시스템 프롬프트에 주입됩니다. 
+                            단순히 정보를 주는 것을 넘어, <strong>"Strict Rules"</strong>를 통해 AI의 행동을 제어합니다.
+                            <br><br>
+                            <ul class="list-disc list-inside mt-2 text-gray-400 text-xs space-y-1">
+                                <li>"Do not invent...": 지식 기반에 없는 내용은 절대 지어내지 말 것.</li>
+                                <li>"Be precise and direct": 생존 상황에 맞춰 짧고 명확하게 답할 것.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 주요 기능 -->
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6 my-8">
+        <h3 class="text-2xl font-semibold text-cyan-300 mb-8 text-center md:text-left">주요 기능 (Key Features)</h3>
     
-    <div class="space-y-16">
+        <div class="space-y-16">
         
         <div class="flex flex-col md:flex-row gap-8 items-center">
             <div class="w-full md:w-1/3 flex justify-center">
